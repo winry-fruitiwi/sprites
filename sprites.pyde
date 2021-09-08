@@ -22,7 +22,12 @@
 
 
 def setup():
-    pass
+    global viking
+    colorMode(HSB, 360, 100, 100, 100)
+    size(640, 320)
+    viking = []
+
 
 def draw():
-    pass
+    global viking
+    background(220, 79, 35)
