@@ -41,7 +41,12 @@ def draw():
     background(220, 79, 35)
     
     for viking in vikings:
-        viking.animate()
+        # viking.animate_idle()
+        # viking.animate_running()
+        # viking.animate_falling()
+        viking.animate_attack()
+        # viking.animate_block()
+        # viking.animate_death()
         viking.show()
         # viking.apply_force(PVector(0, 0.1))
         viking.update()
