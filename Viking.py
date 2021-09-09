@@ -10,6 +10,8 @@ class Viking:
         self.index = 0
         # keeps track of what part of the sheet I want to animate
         self.y_pos = 0
+        # if you're running backwards, flip this over to True.
+        self.mirrored = False
     
     
     # applies a force to a particle using Newton's Second Law of Physics
@@ -65,4 +67,13 @@ class Viking:
     def show(self):
         sprite_frame = self.sheet.get(32 * self.index, self.y_pos * 32, 32, 32)
         sprite_frame.resize(96, 96)
-        image(sprite_frame, self.pos.x, self.pos.y)
+        
+        if self.mirrored:
+            pushMatrix()
+            translate(self.pos.x, self.pos.y)
+            scale(-1, 1)
+            image(sprite_frame, 0, 0)
+            popMatrix()
+        
+        else:
+            image(sprite_frame, self.pos.x, self.pos.y)

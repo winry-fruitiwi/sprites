@@ -26,10 +26,11 @@ from Viking import * # imports everything from a file/list
 def setup():
     global vikings, amiri, animation
     # noSmooth()
+    imageMode(CENTER)
     colorMode(HSB, 360, 100, 100, 100)
     size(640, 320)
     viking_sheet = loadImage("viking.png")
-    amiri = Viking(0, 0, viking_sheet)
+    amiri = Viking(100, height-70, viking_sheet)
     vikings = []
     vikings.append(amiri)
     animation = True
@@ -67,11 +68,13 @@ def keyPressed():
         amiri.apply_force(PVector(-0.1, 0)) # to give a sense of motion
         amiri.animate_running()
         animation = False # if we're animating something else, stop idling!
+        amiri.mirrored = True
     
     if key == "d":
         amiri.apply_force(PVector(0.1, 0))
         amiri.animate_running()
         animation = False
+        amiri.mirrored = False
     
 
 # if we release any key, we'll stop animating and the normal animation will come around.
